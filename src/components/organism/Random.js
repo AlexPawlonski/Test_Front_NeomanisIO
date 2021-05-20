@@ -2,10 +2,12 @@ import {React, useState} from 'react';
 import axios from 'axios';
 
 /**import composent */
-import Title from '../atoms/Title'
 import Button from '../atoms/Button'
 import Select from '../atoms/Select'
 import Img from '../atoms/Img'
+
+/**import img default*/
+import imgDefault from '../../img/imgDefault.jpg'
 
 /**On définit la clé API et son url */
 axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
@@ -14,9 +16,9 @@ axios.defaults.headers.common['x-api-key'] = 'dc98602d-c393-4e02-8795-0d5652023a
 
 export const Random = ({ data, ...props }) => {
 
-    const [imgType, setType] = useState([]);
-    const [img={ src: "", alt:"", id: ""}, setImg] = useState([]);
-   
+    const [imgType, setType] = useState();
+    const [img={ src: imgDefault, alt:"imgDefault", id: ""}, setImg] = useState();
+
     const requestNexImg = async () => {
         /** cette fonction permet de récupérer des images en fonction du type sélectionné par l'utilisateur */
         const res = await axios('/images/search?mime_types='+imgType);
@@ -41,8 +43,7 @@ export const Random = ({ data, ...props }) => {
                 'Content-Type': 'application/json'
                 }
             });
-        console.log(res);
-        
+        console.log(res); 
     }
     
     return(
@@ -51,7 +52,7 @@ export const Random = ({ data, ...props }) => {
                 <Select data ={["jpg,png", "gif", "gif,jpg,png"]} fCallBack={setType}/>
             </div>
             <div>
-                <Button data={"Next"} fCallBack={requestNexImg}/>
+                <Button data={"RANDOM"} fCallBack={requestNexImg}/>
             </div>
             <div>
                 <Img data={img} type="img-full"/>
