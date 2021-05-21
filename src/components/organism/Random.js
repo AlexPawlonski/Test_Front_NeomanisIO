@@ -1,10 +1,11 @@
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 import axios from 'axios';
 
 /**import composent */
 import Button from '../atoms/Button'
 import Select from '../atoms/Select'
 import Img from '../atoms/Img'
+import Load from '../atoms/Load'
 
 /**import img default*/
 import imgDefault from '../../img/imgDefault.jpg'
@@ -17,18 +18,25 @@ axios.defaults.headers.common['x-api-key'] = 'dc98602d-c393-4e02-8795-0d5652023a
 export const Random = ({ data, ...props }) => {
 
     const [imgType, setType] = useState();
-    const [img={ src: imgDefault, alt:"imgDefault", id: ""}, setImg] = useState();
+    const [img, setImg] = useState();
+    const [fav = false, setFav] = useState();
+
+    useEffect(() => {
+        requestNexImg();
+    },[])
 
     const requestNexImg = async () => {
-        /** cette fonction permet de récupérer des images en fonction du type sélectionné par l'utilisateur */
-        const res = await axios('/images/search?mime_types='+imgType);
-        let img = {
-            src : res.data[0].url,
-            alt : res.data[0].id,
-            id : res.data[0].id
+            /** cette fonction permet de récupérer des images en fonction du type sélectionné par l'utilisateur */
+            const res = await axios('/images/search?mime_types='+imgType);
+            let img = {
+                src : res.data[0].url,
+                alt : res.data[0].id,
+                id : res.data[0].id
+            }
+            setImg(img);
+            setFav(false)
         }
-        setImg(img);
-    }
+
     const addFav = async () => {
         /**c'est fonction permet d'ajouter une image à nos favoris  ils seront à retrouver dans la partie favoris de l'application. */
         console.log("ADD fav");
@@ -44,6 +52,7 @@ export const Random = ({ data, ...props }) => {
                 }
             });
         console.log(res); 
+        setFav(true)
     }
     
     return(
@@ -55,10 +64,10 @@ export const Random = ({ data, ...props }) => {
                 <Button data={"RANDOM"} fCallBack={requestNexImg}/>
             </div>
             <div>
-                <Img data={img} type="img-full"/>
+                {img !== undefined ?<Img data={img} type="img-full"/>: <Load data={"Loading Img"}/>}
             </div>
             <div>
-                <Button data={"ADD FAV"} fCallBack={addFav}/>
+                {!fav ? <Button data={"ADD FAV"} fCallBack={addFav}/> : <div><p>In your favorites</p></div>}
             </div>
         </section>
     );

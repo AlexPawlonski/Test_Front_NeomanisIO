@@ -3,7 +3,6 @@ import axios from 'axios';
 
 /**import composent */
 import Title from '../atoms/Title'
-import Button from '../atoms/Button'
 import Select from '../atoms/Select'
 import Img from '../atoms/Img'
 import Link from '../atoms/Link'
