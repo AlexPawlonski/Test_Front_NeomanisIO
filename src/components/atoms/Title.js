@@ -6,12 +6,12 @@ export const Title = ({ type, data, ...props }) => {
   switch (type) {
     case "h2":
       return(
-        <h2 className="font-bold text-2xl my-3 mx-0">{data}</h2>
+        <h2 className="font-bold text-2xl mx-0">{data}</h2>
       );
       break;
     case "h3":
       return(
-        <h3 className="font-bold text-2xl my-3 mx-0">{data}</h3>
+        <h3 className="font-bold text-2xl  mx-0">{data}</h3>
       );
       break;
     default:

@@ -16,10 +16,10 @@ import {
 
 function App() {
   return (
-      <div className="wrapper w-full">
+      <div className="wrapper max-w-6xl mx-auto my-auto">
           <Router >
             <div className="flex w-full">
-              <nav className="w-1/4 h-screen bg-blue-900">
+              <nav className="w-1/4 h-screen bg-blue-900  max-w-xs">
                 <ul className="text-center text-white">
                   <li className="p-1 m-2 hover:border-blue-200 border-b-2 border-blue-900">
                     <Link  to="/">Random</Link>

@@ -6,7 +6,7 @@ export const Img = ({ data, type, ...props }) => {
   switch (type) {
     case "img-full":
       return(
-        <img className="h-96" src={data.src} alt={data.alt}/>
+        <img className="w-full my-2" src={data.src} alt={data.alt}/>
       );
       break;
     default:

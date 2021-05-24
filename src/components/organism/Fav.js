@@ -39,7 +39,6 @@ export const Fav = ({ data, ...props }) => {
       console.log(res);
     }
     deleteFavSend();
-
     console.log(fav);
   }
   
@@ -50,7 +49,7 @@ export const Fav = ({ data, ...props }) => {
       <div>
         <Title data={"Your favourites :"} type={"h2"}/>
       </div>
-      <div>
+      <div className="flex flex-wrap">
         { fav ? fav.data.map( val => <FavPanel data={val} fCallBack={deleteFav}/>) : <Load data={"Loading Fav"}/>   }
       </div>
     </section>

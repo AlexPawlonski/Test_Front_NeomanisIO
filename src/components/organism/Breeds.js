@@ -1,6 +1,9 @@
 import {React, useState, useEffect} from 'react';
 import axios from 'axios';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCat } from '@fortawesome/free-solid-svg-icons'
+
 /**import composent */
 import Title from '../atoms/Title'
 import Select from '../atoms/Select'
@@ -39,7 +42,7 @@ export const Breeds = ({ data, ...props }) => {
   console.log(breedsSelect);
   return(
     <section className="w-full">
-      <div>
+      <div className="flex justify-around">
         <Title data="choose a cat breed" type="h2"/>
         <Select data ={breedsListe} fCallBack={updateInfo}/>
       </div>
@@ -47,7 +50,7 @@ export const Breeds = ({ data, ...props }) => {
         {breedsSelect !== undefined ? /**if */
           <div>
             <Title data={breedsSelect.name} type="h2"/>
-            <div>
+            <div className="md:flex">
               <div>
                 <div>
                   <Title data="Origin" type="h3"/>
@@ -69,15 +72,16 @@ export const Breeds = ({ data, ...props }) => {
                 <div>
                   <Link data={breedsSelect.wikipedia_url} value="Wiki page "/>
                 </div>
-                <div>
-
-                </div>
               </div>
             </div>
           </div>
         :/**else */
-          <div>
-            <p>Choose a cat Breed</p>
+          <div className="flex justify-center items-center">
+            <div className="m-20 p-5 bg-blue-600 rounded-md text-white font-bold flex justify-center items-center">
+              <FontAwesomeIcon icon={faCat} />
+              <p className="mx-2">Select a Breed</p>
+              <FontAwesomeIcon icon={faCat} />
+            </div>
           </div>
         }
       </div>

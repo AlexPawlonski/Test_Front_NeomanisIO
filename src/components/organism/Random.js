@@ -1,6 +1,9 @@
 import {React, useState, useEffect} from 'react';
 import axios from 'axios';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+
 /**import composent */
 import Button from '../atoms/Button'
 import Select from '../atoms/Select'
@@ -56,18 +59,20 @@ export const Random = ({ data, ...props }) => {
     }
     
     return(
-        <section className="w-full">
-            <div> 
-                <Select data ={["jpg,png", "gif", "gif,jpg,png"]} fCallBack={setType}/>
+        <section className="w-full m-4 flew flex-col justify-center">
+            <div className="flex justify-around">
+                <div>
+                    <Button data={"RANDOM"} fCallBack={requestNexImg}/>
+                </div>
+                <div> 
+                    <Select data ={["jpg,png", "gif", "gif,jpg,png"]} fCallBack={setType}/>
+                </div>  
             </div>
-            <div>
-                <Button data={"RANDOM"} fCallBack={requestNexImg}/>
-            </div>
-            <div>
+            <div className="flex justify-center items-center m-5">
                 {img !== undefined ?<Img data={img} type="img-full"/>: <Load data={"Loading Img"}/>}
             </div>
             <div>
-                {!fav ? <Button data={"ADD FAV"} fCallBack={addFav}/> : <div><p>In your favorites</p></div>}
+                {!fav ? <Button data={"ADD FAV"} fCallBack={addFav}/> : <div className="w-full flex justify-center items-center bg-green-500 text-white font-bold rounded-md"><FontAwesomeIcon icon={faHeart} className="mx-2" /><p className="mx-2">In your favorites</p></div>}
             </div>
         </section>
     );
