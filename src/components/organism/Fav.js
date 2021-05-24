@@ -42,16 +42,18 @@ export const Fav = ({ data, ...props }) => {
     console.log(fav);
   }
   
-
-  
   return(
-    <section>
-      <div>
-        <Title data={"Your favourites :"} type={"h2"}/>
+    <section className="w-full m-4">
+      <div className="my-4 text-center">
+        <Title data={"Your favourites"} type={"h2"}/>
       </div>
-      <div className="flex flex-wrap">
-        { fav ? fav.data.map( val => <FavPanel data={val} fCallBack={deleteFav}/>) : <Load data={"Loading Fav"}/>   }
-      </div>
+        { fav ? 
+          <div className="flex justify-center flex-wrap items-center p-4 border-2 rounded-md bg-blue-50">
+            { fav.data.map( val => <FavPanel data={val} fCallBack={deleteFav}/>)}
+          </div> : 
+          <div className="flex justify-center items-center my-4">
+            <Load data={"Loading Fav"}/> 
+          </div>}
     </section>
   );
 };

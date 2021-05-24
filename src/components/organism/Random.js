@@ -60,11 +60,11 @@ export const Random = ({ data, ...props }) => {
     
     return(
         <section className="w-full m-4 flew flex-col justify-center">
-            <div className="flex justify-around">
-                <div>
-                    <Button data={"RANDOM"} fCallBack={requestNexImg}/>
+            <div className="flex justify-around border-0 border-b-2 p-2">
+                <div >
+                    <Button data={"CLIQUE FOR A RANDOM CAT !"} fCallBack={requestNexImg}/>
                 </div>
-                <div> 
+                <div className="flex items-center"> 
                     <Select data ={["jpg,png", "gif", "gif,jpg,png"]} fCallBack={setType}/>
                 </div>  
             </div>
@@ -72,7 +72,7 @@ export const Random = ({ data, ...props }) => {
                 {img !== undefined ?<Img data={img} type="img-full"/>: <Load data={"Loading Img"}/>}
             </div>
             <div>
-                {!fav ? <Button data={"ADD FAV"} fCallBack={addFav}/> : <div className="w-full flex justify-center items-center bg-green-500 text-white font-bold rounded-md"><FontAwesomeIcon icon={faHeart} className="mx-2" /><p className="mx-2">In your favorites</p></div>}
+                {!fav ? <Button data={"ADD FAV"} fCallBack={addFav}/> : <div className="w-full flex justify-center items-center py-2 bg-green-500 text-white font-bold rounded-md"><FontAwesomeIcon icon={faHeart} className="mx-2" /><p className="mx-2">In your favorites</p></div>}
             </div>
         </section>
     );

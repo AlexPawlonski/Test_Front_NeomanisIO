@@ -41,36 +41,38 @@ export const Breeds = ({ data, ...props }) => {
   }
   console.log(breedsSelect);
   return(
-    <section className="w-full">
-      <div className="flex justify-around">
-        <Title data="choose a cat breed" type="h2"/>
+    <section className="w-full m-4">
+      <div className="flex justify-around border-0 border-b-2 p-2">
+        <Title data="Cats around the world" type="h2"/>
         <Select data ={breedsListe} fCallBack={updateInfo}/>
       </div>
       <div>
         {breedsSelect !== undefined ? /**if */
           <div>
-            <Title data={breedsSelect.name} type="h2"/>
-            <div className="md:flex">
-              <div>
-                <div>
+            <div className="text-center my-4 bg-blue-600 rounded-md p-4 text-white">
+              <Title data={breedsSelect.name} type="h2"/>
+            </div>
+            <div className="md:flex border-2 rounded-md bg-blue-50">
+              <div className="m-4">
+                <div className="my-3">
                   <Title data="Origin" type="h3"/>
-                  <p>{breedsSelect.origin}</p>
+                  <p className="my-1 border-t-2 border-0 ">{breedsSelect.origin}</p>
                 </div>
-                <div>
+                <div className="my-3">
                   <Title data="Temperament" type="h3"/>
-                  <p>{breedsSelect.temperament}</p>
+                  <p className="my-1 border-t-2 border-0 ">{breedsSelect.temperament}</p>
                 </div>
-                <div>
+                <div className="my-3">
                   <Title data="Description" type="h3"/>
-                  <p>{breedsSelect.description}</p>
+                  <p className="my-1 border-t-2 border-0 " >{breedsSelect.description}</p>
                 </div>
               </div>
-              <div>
-                <div>
+              <div className="m-4">
+                <div className="m-3 w-72">
                   <Img data = {{src:breedsSelect.image.url, alt: breedsSelect.id}} type={"img-full"} />
                 </div>
-                <div>
-                  <Link data={breedsSelect.wikipedia_url} value="Wiki page "/>
+                <div className="flex justify-center items-center ">
+                  <Link data={breedsSelect.wikipedia_url} value="Wiki page"/>
                 </div>
               </div>
             </div>

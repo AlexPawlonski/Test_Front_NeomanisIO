@@ -40,8 +40,8 @@ export const Vote = ({ data, ...props }) => {
       imgRequest();
     }
     return(
-      <section>
-        <div>
+      <section  className="w-full m-4">
+        <div className="text-center my-4">
           <Title data={"You like this cat ?"} type={"h2"}/>
         </div>
         <VotePanel data={img} fCallBack={voteCat} />
