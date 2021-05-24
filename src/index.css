@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -13,4 +15,67 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/*Menu de navagation */
+.link-nav{
+  @apply  p-1 m-2 hover:border-blue-200 border-b-2 border-blue-900;
+}
+
+/*titre et paragraphe de la page breeds*/
+.para{
+  @apply my-1 border-t-2 border-0;
+}
+/*Style Titre plus icon*/
+.titreHead{
+  @apply my-4 text-center flex justify-center items-center bg-blue-800 rounded-md py-1 text-white;
+}
+
+/*Bouttons de vote*/
+.buttonVote{
+  @apply flex justify-around items-center rounded-md px-2 py-1 transform hover:scale-105 duration-100 cursor-pointer;
+}
+
+
+/*CCS de personnalisation du select  écrit en CSS natif car Tailwind ne gère pas encore la modification des style sur les inputs. 
+Ce code as été récupérer sur internet pour gagner du temps */
+.select-style {
+  padding: 10px;
+  margin: 0;
+  border: 1px solid #ccc;
+  width: 120px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #fff;
+  background: #fff;
+  position: relative;
+}
+.select-style select {
+  padding: 5px 8px;
+  width: 130%;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.select-style:after {
+  top: 50%;
+  left: 85%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(0, 0, 0, 0);
+  border-top-color: #000000;
+  border-width: 5px;
+  margin-top: -2px;
+  z-index: 100;
+}
+.select-style select:focus {
+  outline: none;
 }

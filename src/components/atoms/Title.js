@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 
 export const Title = ({ type, data, ...props }) => {
-  switch (type) {
+
+  switch (type) { /**Ce composant gère l'affichage des titres sur les différentes pages */
     case "h2":
       return(
         <h2 className="font-bold text-3xl mx-0">{data}</h2>
